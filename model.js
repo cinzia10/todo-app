@@ -23,6 +23,13 @@ class Todo{
       return new Todo(obj.id, new Date(obj.createDate*1000), obj.name, obj.tags, obj.priority)
     }
 
+    static getFormatteDate(date){
+      let minutes = date.getMinutes();
+      minutes = minutes <= 9 ? '0' + minutes : minutes;
+      const dateString = date.getDate()+ '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() + ' ' + date.getHours() + ':' + minutes);
+      return dateString
+    }
+
 
   
   }

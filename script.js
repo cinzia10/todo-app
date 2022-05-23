@@ -17,16 +17,10 @@ function display (array){
         const card = document.createElement('div');
         card.classList.add('card')
 
-        const doneButton = document.createElement("button")
-        doneButton.classList.add("done-btn")
-
         const nameTodo = document.createElement('p');
         const textTodo = document.createTextNode(element.name);
         nameTodo.appendChild(textTodo);
         card.appendChild(nameTodo);
-
-        
-
 
         for (const tags of element.tags) {
             const tagTodo = document.createElement("span")
@@ -38,7 +32,7 @@ function display (array){
         }
 
         const dateTodo = document.createElement("p")
-        const dateNode = document.createTextNode(element.creationDate.toISOString());
+        const dateNode = document.createTextNode(Todo.getFormatteDate(element.creationDate));
         dateTodo.appendChild(dateNode)
         card.appendChild(dateTodo)
 
@@ -51,9 +45,11 @@ function display (array){
         trashButton.onclick = () => deleteTodo(element.id);
         card.appendChild(trashButton)
 
+        const doneButton = document.createElement("button")
+        doneButton.classList.add("done-btn")
+        card.appendChild(doneButton)
 
     
-        card.appendChild(doneButton)
 
         if (element.priority === 0){
             card.style["background"] = "#b5e48c";
