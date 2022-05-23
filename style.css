@@ -22,7 +22,7 @@ body {
 
 #card-container {
     padding-top: 80px;
-    background-color: rgb(189, 204, 231);
+    background-image: url(./assets/tile_background.png);
     height: 100%;
     overflow: auto;
 }
@@ -94,4 +94,16 @@ body {
 
 .tags:hover{
     background-color: rgba(8, 3, 3, 0.537);
+}
+
+@media screen and (min-width: 500px) {
+    #card-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card{
+        height: fit-content;
+    }
+    
 }
