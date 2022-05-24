@@ -20,7 +20,7 @@ class Todo{
     
 
     static fromObj(obj){
-      return new Todo(obj.id, new Date(obj.createDate*1000), obj.name, obj.tags, obj.priority)
+      return new Todo(obj.id, new Date(obj.creationDate*1000), obj.name, obj.tags, obj.priority)
     }
 
     static getFormatteDate(date){
