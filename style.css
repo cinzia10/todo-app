@@ -105,5 +105,10 @@ body {
     .card{
         height: fit-content;
     }
+
+    #add-card{
+        height: 52px;
+        width: 52px;
+    }
     
 }
