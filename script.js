@@ -7,10 +7,10 @@ const deleteCallback = () => {
   initApp()
 }
 
-const resultCallBack = (result) => display(result.map(obj => Todo.fromObj(obj)));
+const resultCallBack = (result) => displayElements(result.map(obj => Todo.fromObj(obj)));
 
 
-function display (array){
+function displayElements (array){
     const container = document.getElementById('card-container');
     container.innerHTML= "";
     console.log(array);
@@ -83,12 +83,15 @@ function deleteTodo(id) {
     const fetchConf = {
         method: 'delete'
     }
-    fetch(deleteUrl, fetchConf).then(responseCallBack).then(deleteCallback);
+    fetch(deleteUrl, fetchConf)
+    .then(responseCallBack)
+    .then(deleteCallback)
+    .catch(catchError);
 }
 
-const initApp = () => fetch('https://62860d21f0e8f0bb7c0f434d.mockapi.io/todos')
+const loadPage = () => fetch('https://62860d21f0e8f0bb7c0f434d.mockapi.io/todos')
                       .then(responseCallBack)
                       .then(resultCallBack)
                       .catch(catchError);
 
-initApp();
+loadPage();
