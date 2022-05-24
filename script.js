@@ -55,11 +55,11 @@ function display (array){
             card.style["background"] = "#b5e48c";
             divTodo.style["background"] = "#1C6E8C"
           } else if (element.priority === 1){
-            card.style["background"] = "#e9c46a";
-            divTodo.style["background"] = "#a3824a"
+            card.style["background"] = "#fdf1ad";
+            divTodo.style["background"] = "#AE9504"
           } else if (element.priority === 2) {
-            card.style["background"] = "#ff9500";
-            divTodo.style["background"] = "#ffda80"
+            card.style["background"] = "#FBBB62";
+            divTodo.style["background"] = "#C77605"
           } else if (element.priority === 3) {
             card.style["background"] = "#ff392e";
             divTodo.style["background"] = "#b32620"
