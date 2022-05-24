@@ -53,7 +53,7 @@ function display (array){
 
         if (element.priority === 0){
             card.style["background"] = "#b5e48c";
-            divTodo.style["background"] = "#1C6E8C"
+            divTodo.style["background"] = "#497C1D"
           } else if (element.priority === 1){
             card.style["background"] = "#fdf1ad";
             divTodo.style["background"] = "#AE9504"
