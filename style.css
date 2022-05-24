@@ -8,6 +8,8 @@ body {
     height: 100%;
     width: 100%;
     font-family: 'Plus Jakarta Sans', sans-serif;
+    background-image: url(./assets/tile_background.png);
+    background-size: cover;
 }
 
 .header {
@@ -21,10 +23,9 @@ body {
 }
 
 #card-container {
-    padding-top: 80px;
-    background-image: url(./assets/tile_background.png);
+    padding-top: 90px;
     height: 100%;
-    overflow: auto;
+    scroll-behavior:smooth;
 }
 
 .card {
