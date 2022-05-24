@@ -12,13 +12,14 @@ body {
     background-size: cover;
 }
 
+
 .header-title{
     font-size: xx-large;
     display: inline-block;
-    padding: 16px;
+    margin: 24px;
 }
 
-.header-btn-up{
+#refresh-btn{
     float: right;
     margin: 24px;
     background-image: url(./assets/reloading.svg);
@@ -27,6 +28,14 @@ body {
     background-color: transparent;
     border: none;
     background-size: contain;
+    filter:  brightness(0) invert(1);
+}
+
+#loader{
+    float: right;
+    margin: 24px;
+    height: 36px;
+    width: 36px;
 }
 
 p {
@@ -40,6 +49,7 @@ p {
     width: 100%;
     background-color: rgb(50, 97, 183);
     color: whitesmoke;
+    min-height: 84px;
 }
 
 #card-container {
@@ -99,7 +109,7 @@ p {
 #add-card{
     position: fixed;
     bottom: 16px;
-    right: 45%;
+    right: 16px;
     background-image: url(./assets/circle-plus-solid.svg);
     background-size: contain;
     background-repeat: no-repeat;
@@ -129,9 +139,10 @@ p {
         height: fit-content;
     }
 
-    #add-card{
-        height: 52px;
-        width: 52px;
+  #add-card{
+        height: 60px !important;
+        width: 60px !important;
+        background-size: contain;
     }
 
     .done-btn{

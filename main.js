@@ -1,14 +1,40 @@
+const BASE_URL = 'https://62860d21f0e8f0bb7c0f434d.mockapi.io/todos';
 
-const responseCallBack = (response) => response.json();
+let elementArray = [];
 
-const catchError = (error) => console.log(error);
-
-const deleteCallback = () => {
-  loadPage()
+function startLoading() {
+    const loader = document.getElementById('loader');
+    loader.style.display = 'inline-block';
+    const refresh = document.getElementById('refresh-btn');
+    refresh.style.display = 'none';
 }
 
-const resultCallBack = (result) => displayElements(result.map(obj => Todo.fromObj(obj)));
+function stopLoading() {
+    const loader = document.getElementById('loader');
+    loader.style.display = 'none';
+    const refresh = document.getElementById('refresh-btn');
+    refresh.style.display = 'inline-block';
+}
 
+function filterElement(el1, el2) {
+    return el1.id !== el2.id;
+}
+
+function removeAndRefresh(element) {
+    stopLoading();
+    elementArray = elementArray.filter(el1 => filterElement(el1, element));
+    displayElements(elementArray);
+}
+
+function deleteElement(id) {
+startLoading()
+  const deleteUrl = BASE_URL + '/' + id;
+  const fetchOptions = {method: 'delete'};
+  fetch(deleteUrl, fetchOptions)
+  .then(response => response.json())
+  .then(result => removeAndRefresh(result))
+  .catch(error => stopLoading())
+}
 
 function displayElements (array){
     const container = document.getElementById('card-container');
@@ -44,7 +70,7 @@ function displayElements (array){
 
         const trashButton = document.createElement("button");
         trashButton.classList.add("trash-btn");
-        trashButton.onclick = () => deleteTodo(element.id);
+        trashButton.onclick = () => deleteElement(element.id);
         card.appendChild(trashButton);
 
         const doneButton = document.createElement("button");
@@ -77,21 +103,18 @@ function displayElements (array){
     }
 }
 
-
-function deleteTodo(id) {
-    const deleteUrl = 'https://62860d21f0e8f0bb7c0f434d.mockapi.io/todos/' + id;
-    const fetchConf = {
-        method: 'delete'
-    }
-    fetch(deleteUrl, fetchConf)
-    .then(responseCallBack)
-    .then(deleteCallback)
-    .catch(catchError);
+function initApp(array) {
+    stopLoading();
+    elementArray = array;
+    displayElements(elementArray);
 }
 
-const loadPage = () => fetch('https://62860d21f0e8f0bb7c0f434d.mockapi.io/todos')
-                      .then(responseCallBack)
-                      .then(resultCallBack)
-                      .catch(catchError);
+function loadApp() {
+    startLoading();
+    fetch(BASE_URL)
+    .then(response => response.json())
+    .then(result => initApp(result.map(obj => Todo.fromObj(obj))))
+    .catch(error => stopLoading())
+}
 
-loadPage();
+loadApp()
