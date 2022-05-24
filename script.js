@@ -3,19 +3,21 @@ const responseCallBack = (response) => response.json();
 
 const catchError = (error) => console.log(error);
 
-const deleteCallback = () => {initApp()}
+const deleteCallback = () => {
+  initApp()
+}
 
 const resultCallBack = (result) => display(result.map(obj => Todo.fromObj(obj)));
 
 
 function display (array){
     const container = document.getElementById('card-container');
-    container.innerHTML=""
-    console.log(array)
+    container.innerHTML= "";
+    console.log(array);
 
     for (const element of array) {
         const card = document.createElement('div');
-        card.classList.add('card')
+        card.classList.add('card');
 
         const nameTodo = document.createElement('p');
         const textTodo = document.createTextNode(element.name);
@@ -23,55 +25,55 @@ function display (array){
         card.appendChild(nameTodo);
 
         for (const tags of element.tags) {
-            const tagTodo = document.createElement("span")
-            const tagNode = document.createTextNode(tags)
-            tagTodo.classList.add("tags")
+            const tagTodo = document.createElement("span");
+            const tagNode = document.createTextNode(tags);
+            tagTodo.classList.add("tags");
 
-            tagTodo.appendChild(tagNode)
-            card.appendChild(tagTodo)
+            tagTodo.appendChild(tagNode);
+            card.appendChild(tagTodo);
         }
 
-        const dateTodo = document.createElement("p")
+        const dateTodo = document.createElement("p");
         const dateNode = document.createTextNode(Todo.getFormatteDate(element.creationDate));
-        dateTodo.appendChild(dateNode)
-        card.appendChild(dateTodo)
+        dateTodo.appendChild(dateNode);
+        card.appendChild(dateTodo);
 
-        const divTodo = document.createElement("div")
-        divTodo.classList.add("div-sep")
-        card.appendChild(divTodo)
+        const divTodo = document.createElement("div");
+        divTodo.classList.add("div-sep");
+        card.appendChild(divTodo);
 
-        const trashButton = document.createElement("button")
-        trashButton.classList.add("trash-btn")
+        const trashButton = document.createElement("button");
+        trashButton.classList.add("trash-btn");
         trashButton.onclick = () => deleteTodo(element.id);
-        card.appendChild(trashButton)
+        card.appendChild(trashButton);
 
-        const doneButton = document.createElement("button")
-        doneButton.classList.add("done-btn")
-        card.appendChild(doneButton)
+        const doneButton = document.createElement("button");
+        doneButton.classList.add("done-btn");
+        card.appendChild(doneButton);
 
     
 
         if (element.priority === 0){
             card.style["background"] = "#b5e48c";
-            divTodo.style["background"] = "#497C1D"
+            divTodo.style["background"] = "#497C1D";
           } else if (element.priority === 1){
             card.style["background"] = "#fdf1ad";
-            divTodo.style["background"] = "#AE9504"
+            divTodo.style["background"] = "#AE9504";
           } else if (element.priority === 2) {
             card.style["background"] = "#FBBB62";
-            divTodo.style["background"] = "#C77605"
+            divTodo.style["background"] = "#C77605";
           } else if (element.priority === 3) {
             card.style["background"] = "#ff392e";
-            divTodo.style["background"] = "#b32620"
+            divTodo.style["background"] = "#b32620";
 
           } else {
             card.style["background"] = "#a7a4a4";
-            divTodo.style["background"] = "#757374"
+            divTodo.style["background"] = "#757374";
 
           }
 
         
-        container.appendChild(card)
+        container.appendChild(card);
     }
 }
 
@@ -81,10 +83,12 @@ function deleteTodo(id) {
     const fetchConf = {
         method: 'delete'
     }
-    fetch(deleteUrl, fetchConf).then(responseCallBack).then(deleteCallback)
+    fetch(deleteUrl, fetchConf).then(responseCallBack).then(deleteCallback);
 }
 
-const initApp = () => fetch('https://62860d21f0e8f0bb7c0f434d.mockapi.io/todos').then(responseCallBack).then(resultCallBack).catch(catchError);
-
+const initApp = () => fetch('https://62860d21f0e8f0bb7c0f434d.mockapi.io/todos')
+                      .then(responseCallBack)
+                      .then(resultCallBack)
+                      .catch(catchError);
 
 initApp();

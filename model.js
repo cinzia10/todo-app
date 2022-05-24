@@ -26,7 +26,7 @@ class Todo{
     static getFormatteDate(date){
       let minutes = date.getMinutes();
       minutes = minutes <= 9 ? '0' + minutes : minutes;
-      const dateString = date.getDate()+ '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() + ' ' + date.getHours() + ':' + minutes);
+      const dateString = date.getDate()+ '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() + ' - ' + date.getHours() + ':' + minutes);
       return dateString
     }
 
