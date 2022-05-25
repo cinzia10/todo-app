@@ -89,6 +89,8 @@ function deleteTodo(id) {
     .catch(catchError);
 }
 
+
+
 const loadPage = () => fetch('https://62860d21f0e8f0bb7c0f434d.mockapi.io/todos')
                       .then(responseCallBack)
                       .then(resultCallBack)

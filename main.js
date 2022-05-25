@@ -70,7 +70,8 @@ function displayElements (array){
 
         const trashButton = document.createElement("button");
         trashButton.classList.add("trash-btn");
-        trashButton.onclick = () => deleteElement(element.id);
+        // trashButton.onclick = () => deleteElement(element.id);
+        trashButton.onclick = () => viewCallback();
         card.appendChild(trashButton);
 
         const doneButton = document.createElement("button");
@@ -98,10 +99,32 @@ function displayElements (array){
 
           }
 
+          
+
         
         container.appendChild(card);
     }
+
 }
+
+function viewCallback() {
+  const popup = document.getElementById("message-confirm");
+  popup.classList.toggle("show-bg");
+  const message = document.getElementById('message-container')
+  message.classList.toggle("show-msg");
+}
+
+function hideCallback (){
+  const popup = document.getElementById("message-confirm");
+  popup.classList.toggle("show-bg");
+  const message = document.getElementById('message-container')
+  message.classList.toggle("show-msg");
+}
+
+function deleteBtn(){
+  removeAndRefresh(element.id);
+}
+
 
 function initApp(array) {
     stopLoading();

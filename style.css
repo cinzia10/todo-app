@@ -13,13 +13,13 @@ body {
 }
 
 
-.header-title{
+.header-title {
     font-size: xx-large;
     display: inline-block;
     margin: 24px;
 }
 
-#refresh-btn{
+#refresh-btn {
     float: right;
     margin: 24px;
     background-image: url(./assets/reloading.svg);
@@ -28,10 +28,10 @@ body {
     background-color: transparent;
     border: none;
     background-size: contain;
-    filter:  brightness(0) invert(1);
+    filter: brightness(0) invert(1);
 }
 
-#loader{
+#loader {
     float: right;
     margin: 24px;
     height: 36px;
@@ -50,14 +50,42 @@ p {
     background-color: rgb(50, 97, 183);
     color: whitesmoke;
     min-height: 84px;
+    z-index: 3;
 }
 
 #card-container {
-    padding-top: 90px;
-    padding-bottom: 70px;
+    padding-top: 90px !important;
+    padding-bottom: 70px !important;
     height: 100%;
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
 }
+
+.show-bg {
+    background-color: #31313175;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.show-msg {
+    width: fit-content;
+    text-align: center;
+    background-color: rgb(50, 97, 183);
+    padding: 30px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.hide{
+    display: none;
+}
+
+
 
 .card {
     border-radius: 16px;
@@ -65,15 +93,15 @@ p {
     padding: 8px;
     box-shadow: -11px 2px 14px -5px rgba(0, 0, 0, 0.82);
     -webkit-box-shadow: -11px 9px 14px -5px rgba(0, 0, 0, 0.82);
-    -moz-box-shadow: -11px 9px 14px -5px rgba(0, 0, 0, 0.82);    
+    -moz-box-shadow: -11px 9px 14px -5px rgba(0, 0, 0, 0.82);
 }
 
-.card p:first-letter{
+.card p:first-letter {
     text-transform: uppercase;
 }
 
 
-.tags{
+.tags {
     display: inline-block;
     margin: 8px;
     padding: 8px;
@@ -82,7 +110,7 @@ p {
     border-radius: 16px;
 }
 
-.trash-btn{
+.trash-btn {
     background-image: url(./assets/trash-can-solid.svg);
     margin-left: 32px;
     bottom: 8px;
@@ -94,7 +122,7 @@ p {
     background-color: transparent;
 }
 
-.done-btn{
+.done-btn {
     float: right;
     margin-right: 32px;
     background-image: url(./assets/circle-check-solid.svg);
@@ -106,7 +134,7 @@ p {
     background-color: transparent;
 }
 
-#add-card{
+#add-card {
     position: fixed;
     bottom: 16px;
     right: 16px;
@@ -117,15 +145,15 @@ p {
     height: 42px;
     border: none;
     background-color: transparent;
-    
+
 }
 
-.div-sep{
+.div-sep {
     height: 2px;
     margin-bottom: 8px;
 }
 
-.tags:hover{
+.tags:hover {
     background-color: rgba(8, 3, 3, 0.537);
 }
 
@@ -135,29 +163,29 @@ p {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .card{
+    .card {
         height: fit-content;
     }
 
-  #add-card{
+    #add-card {
         height: 60px !important;
         width: 60px !important;
         background-size: contain;
     }
 
-    .done-btn{
+    .done-btn {
         margin: 4px;
     }
 
-    .trash-btn{
+    .trash-btn {
         margin: 4px;
     }
 
-    button{
+    button {
         cursor: pointer;
     }
 
-    #add-card{
+    #add-card {
         position: fixed;
         bottom: 16px;
         right: 16px;
@@ -168,7 +196,7 @@ p {
         height: 36px;
         border: none;
         background-color: transparent;
-        
+
     }
-    
+
 }
