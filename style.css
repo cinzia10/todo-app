@@ -54,37 +54,11 @@ p {
 }
 
 #card-container {
-    padding-top: 90px !important;
-    padding-bottom: 70px !important;
+    padding-top: 90px;
+    padding-bottom: 70px;
     height: 100%;
     scroll-behavior: smooth;
 }
-
-.show-bg {
-    background-color: #31313175;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-.show-msg {
-    width: fit-content;
-    text-align: center;
-    background-color: rgb(50, 97, 183);
-    padding: 30px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    z-index: 2;
-}
-
-.hide{
-    display: none;
-}
-
 
 
 .card {
