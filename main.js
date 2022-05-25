@@ -10,13 +10,24 @@ let elementArray = [];
 //   }
 //   window.location.href = urldString;
 // }
+// function goToTodoPage(element) {
+//   let urldString = "/todo.html"
+//   if(element){
+//     urldString = urldString + '?id=' + element.id + '&name=' + element.name;
+//   }
+//   window.location.href = urldString;
+// }
+
 function goToTodoPage(element) {
   let urldString = "/todo.html"
   if(element){
-    urldString = urldString + '?id=' + element.id + '&name=' + element.name;
+    const elementString = JSON.stringify(element);
+    sessionStorage.setItem('selectedElement', elementString);
   }
   window.location.href = urldString;
 }
+
+
 
 function startLoading() {
   const loader = document.getElementById('loader');

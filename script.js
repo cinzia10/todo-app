@@ -23,7 +23,16 @@
 function parseUrlParams() {
     const urlSearchParams = new URLSearchParams(window.location.search);
     const param = Object.fromEntries(urlSearchParams);
-    console.log(param);
+    return param;
+    // console.log(param);
 }
 
-parseUrlParams();
+function getElementFromSessionStorage() {
+    const elementString = sessionStorage.getItem('selectedElement');
+    if (elementString) {
+        const element = JSON.parse(elementString);
+        console.log('element', element);
+    }
+  }
+
+  getElementFromSessionStorage()
