@@ -3,13 +3,14 @@ const BASE_URL = 'https://62860d21f0e8f0bb7c0f434d.mockapi.io/todos';
 let elementArray = [];
 
 
-// function goToTodoPage(id) {
-//   let urldString = "/todo.html"
-//   if(id){
-//     urldString = urldString + '?id-' + id;
-//   }
-//   window.location.href = urldString;
-// }
+function goToElementPage(id) {
+  let urldString = "/todo.html"
+  if(id){
+    urldString = urldString + '?id=' + id;
+  }
+  window.location.href = urldString;
+}
+
 // function goToTodoPage(element) {
 //   let urldString = "/todo.html"
 //   if(element){
@@ -18,14 +19,14 @@ let elementArray = [];
 //   window.location.href = urldString;
 // }
 
-function goToTodoPage(element) {
-  let urldString = "/todo.html"
-  if(element){
-    const elementString = JSON.stringify(element);
-    sessionStorage.setItem('selectedElement', elementString);
-  }
-  window.location.href = urldString;
-}
+// function goToTodoPage(element) {
+//   let urldString = "/todo.html"
+//   if(element){
+//     const elementString = JSON.stringify(element);
+//     sessionStorage.setItem('selectedElement', elementString);
+//   }
+//   window.location.href = urldString;
+// }
 
 
 
@@ -105,7 +106,7 @@ function displayElements(array) {
 
     const doneButton = document.createElement("button");
     doneButton.classList.add("done-btn");
-    doneButton.onclick = () => goToTodoPage(element)
+    doneButton.onclick = () => goToElementPage(element.id)
     card.appendChild(doneButton);
 
     if (element.priority === 0) {

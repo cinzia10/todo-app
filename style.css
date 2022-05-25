@@ -124,6 +124,8 @@ p {
 .div-sep {
     height: 2px;
     margin-bottom: 8px;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .tags:hover {
