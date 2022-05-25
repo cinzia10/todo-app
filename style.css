@@ -45,7 +45,6 @@ p {
 .header {
     position: fixed;
     top: 0px;
-    /* border-radius: 0px 0px 8px 8px; */
     width: 100%;
     background-color: rgb(50, 97, 183);
     color: whitesmoke;
@@ -134,7 +133,7 @@ p {
 @media screen and (min-width: 750px) {
     #card-container {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .card {
@@ -170,7 +169,6 @@ p {
         height: 36px;
         border: none;
         background-color: transparent;
-
     }
 
 }

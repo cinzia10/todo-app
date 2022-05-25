@@ -1,99 +1,29 @@
+// function parseUrlParams() {
+//     const url = window.location.href;
+//     const urlArray = url.split('?');
+//     const paramsString = urlArray[1];
+//     if (paramsString) {
+//         const paramsArray = paramsString.split('&');
+//         const paramsObj = {};
+//         for (const str of paramsArray) {
+//             const strArray = str.split('=');
+//             paramsObj[strArray[0]] =  decodeURIComponent(strArray[1]);
+//         }
+//         console.log(paramsObj);
+//     } else {
+//         return null
+//     }
+// }
 
-const responseCallBack = (response) => response.json();
+// parseUrlParams();
 
-const catchError = (error) => console.log(error);
 
-const deleteCallback = () => {
-  loadPage()
+
+/////////////////////////////////////////////////////////////////////////////
+function parseUrlParams() {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const param = Object.fromEntries(urlSearchParams);
+    console.log(param);
 }
 
-const resultCallBack = (result) => displayElements(result.map(obj => Todo.fromObj(obj)));
-
-
-function displayElements (array){
-    const container = document.getElementById('card-container');
-    container.innerHTML= "";
-    console.log(array);
-
-    for (const element of array) {
-        const card = document.createElement('div');
-        card.classList.add('card');
-
-        const nameTodo = document.createElement('p');
-        const textTodo = document.createTextNode(element.name);
-        nameTodo.appendChild(textTodo);
-        card.appendChild(nameTodo);
-
-        for (const tags of element.tags) {
-            const tagTodo = document.createElement("span");
-            const tagNode = document.createTextNode(tags);
-            tagTodo.classList.add("tags");
-
-            tagTodo.appendChild(tagNode);
-            card.appendChild(tagTodo);
-        }
-
-        const dateTodo = document.createElement("p");
-        const dateNode = document.createTextNode(Todo.getFormatteDate(element.creationDate));
-        dateTodo.appendChild(dateNode);
-        card.appendChild(dateTodo);
-
-        const divTodo = document.createElement("div");
-        divTodo.classList.add("div-sep");
-        card.appendChild(divTodo);
-
-        const trashButton = document.createElement("button");
-        trashButton.classList.add("trash-btn");
-        trashButton.onclick = () => deleteTodo(element.id);
-        card.appendChild(trashButton);
-
-        const doneButton = document.createElement("button");
-        doneButton.classList.add("done-btn");
-        card.appendChild(doneButton);
-
-    
-
-        if (element.priority === 0){
-            card.style["background"] = "#b5e48c";
-            divTodo.style["background"] = "#497C1D";
-          } else if (element.priority === 1){
-            card.style["background"] = "#fdf1ad";
-            divTodo.style["background"] = "#AE9504";
-          } else if (element.priority === 2) {
-            card.style["background"] = "#FBBB62";
-            divTodo.style["background"] = "#C77605";
-          } else if (element.priority === 3) {
-            card.style["background"] = "#ff392e";
-            divTodo.style["background"] = "#b32620";
-
-          } else {
-            card.style["background"] = "#a7a4a4";
-            divTodo.style["background"] = "#757374";
-
-          }
-
-        
-        container.appendChild(card);
-    }
-}
-
-
-function deleteTodo(id) {
-    const deleteUrl = 'https://62860d21f0e8f0bb7c0f434d.mockapi.io/todos/' + id;
-    const fetchConf = {
-        method: 'delete'
-    }
-    fetch(deleteUrl, fetchConf)
-    .then(responseCallBack)
-    .then(deleteCallback)
-    .catch(catchError);
-}
-
-
-
-const loadPage = () => fetch('https://62860d21f0e8f0bb7c0f434d.mockapi.io/todos')
-                      .then(responseCallBack)
-                      .then(resultCallBack)
-                      .catch(catchError);
-
-loadPage();
+parseUrlParams();

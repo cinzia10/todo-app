@@ -2,6 +2,22 @@ const BASE_URL = 'https://62860d21f0e8f0bb7c0f434d.mockapi.io/todos';
 
 let elementArray = [];
 
+
+// function goToTodoPage(id) {
+//   let urldString = "/todo.html"
+//   if(id){
+//     urldString = urldString + '?id-' + id;
+//   }
+//   window.location.href = urldString;
+// }
+function goToTodoPage(element) {
+  let urldString = "/todo.html"
+  if(element){
+    urldString = urldString + '?id=' + element.id + '&name=' + element.name;
+  }
+  window.location.href = urldString;
+}
+
 function startLoading() {
   const loader = document.getElementById('loader');
   loader.style.display = 'inline-block';
@@ -78,23 +94,24 @@ function displayElements(array) {
 
     const doneButton = document.createElement("button");
     doneButton.classList.add("done-btn");
+    doneButton.onclick = () => goToTodoPage(element)
     card.appendChild(doneButton);
 
     if (element.priority === 0) {
-      card.style["background"] = "#b5e48c";
+      card.style["background"] = "rgba(181, 228, 140, 0.45)";
       divTodo.style["background"] = "#497C1D";
     } else if (element.priority === 1) {
-      card.style["background"] = "#fdf1ad";
+      card.style["background"] = "rgba(253, 241, 173, 0.45)";
       divTodo.style["background"] = "#AE9504";
     } else if (element.priority === 2) {
-      card.style["background"] = "#FBBB62";
+      card.style["background"] = "rgba(251, 187, 98, 0.45)";
       divTodo.style["background"] = "#C77605";
     } else if (element.priority === 3) {
-      card.style["background"] = "#ff392e";
+      card.style["background"] = "rgba(255, 57, 46, 0.45)";
       divTodo.style["background"] = "#b32620";
 
     } else {
-      card.style["background"] = "#a7a4a4";
+      card.style["background"] = "rgba(167, 164, 164, 0.45)";
       divTodo.style["background"] = "#757374";
 
     }
@@ -108,6 +125,7 @@ function initApp(array) {
   elementArray = array;
   displayElements(elementArray);
 }
+
 
 function loadApp() {
   startLoading();
